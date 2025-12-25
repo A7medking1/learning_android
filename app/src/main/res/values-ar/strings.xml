@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="enter_your_info">قم بادخال المعلومات</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="enter_your_name">أدخل اسمك</string>
+    <string name="submit">إرسال</string>
+</resources>
