@@ -1,55 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="15dp"
-    android:layout_marginBottom="15dp"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
 
-
-    <ImageView
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:src="@drawable/playstore"
-        />
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/btnBk"
-        android:padding="16dp"
-        android:text="@string/enter_your_info"
-        android:textColor="@color/textColor"
-        android:textSize="18sp"
-        android:drawableEnd="@drawable/home"
-        android:drawableTint="@color/black"
-        />
-
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/enter_your_name"
-        android:background="@color/btnBk"
-        android:textColor="@color/black"
-        android:padding="16dp"
-        android:layout_marginTop="15dp"
-        android:textSize="16sp"
-        />
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:src="@drawable/playstore" />
+
+        </LinearLayout>
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
-        android:text="@string/submit"
+    </ScrollView>
 
-        />
 
 </LinearLayout>
