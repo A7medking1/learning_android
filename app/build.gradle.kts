@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("com.airbnb.android:lottie:6.6.6")
+    implementation("com.github.bumptech.glide:glide:5.0.5")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
