@@ -7,4 +7,8 @@
     <string name="go_to_homescreen">go to HomeScreen</string>
     <string name="welcome_to_home_screen">Welcome TO Home Screen</string>
     <string name="back">Back</string>
+    <string name="fragment_one">Fragment one</string>
+    <string name="fragment_two">Fragment Two</string>
+    <string name="change_screen">change screen</string>
+    <string name="remove_screen">remove screen</string>
 </resources>

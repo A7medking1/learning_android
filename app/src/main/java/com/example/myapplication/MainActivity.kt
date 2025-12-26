@@ -1,83 +1,62 @@
 package com.example.myapplication
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
-import com.example.myapplication.MainActivity.Constants.EXTRA_NAME
+import androidx.fragment.app.Fragment
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d(LOG_TAG, "onCreate")
 
+    val firstFragment = OneFragment()
+    val secondFragment = TwoFragment()
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         enableEdgeToEdge()
         setContentView(binding.root)
-
-        addCallBack()
+        initSubView()
+        addClick()
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(LOG_TAG, "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(LOG_TAG, "onResume")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(LOG_TAG, "onStop")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(LOG_TAG, "onPause")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(LOG_TAG, "onRestart")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(LOG_TAG, "onDestroy")
-    }
-
-    companion object {
-        const val LOG_TAG = "FirstActivity"
-    }
-
-
-    private fun addCallBack() {
-        binding.btnSubmit.setOnClickListener {
-            try {
-                val intent = Intent(Intent.ACTION_SEND)
-                intent.type = "text/plain"
-                intent.setPackage("com.whatsapp")
-                intent.putExtra(Intent.EXTRA_TEXT, "Hello")
-                startActivity(intent)
-            } catch (e: Exception) {
-                Toast.makeText(this, "WhatsApp not installed", Toast.LENGTH_SHORT).show()
-            }
+    private fun addClick() {
+        binding.btn.setOnClickListener {
+            showSecondFragment()
         }
 
+        binding.rmBtn.setOnClickListener {
+            removeFragment(secondFragment)
+        }
     }
 
-    object Constants {
-        const val EXTRA_NAME = "extraName"
+    private fun removeFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.remove( fragment)
+        transaction.commit()
     }
 
+    private fun showSecondFragment() {
+   //     addFragment(secondFragment)
+        replaceFragment(secondFragment)
+    }
+
+    private fun initSubView() {
+        addFragment(firstFragment)
+    }
+
+    private fun addFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.fragmentContainerView, fragment)
+        transaction.commit()
+    }
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentContainerView, fragment)
+        transaction.commit()
+    }
 
 }

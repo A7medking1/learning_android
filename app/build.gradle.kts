@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("com.airbnb.android:lottie:6.6.6")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
