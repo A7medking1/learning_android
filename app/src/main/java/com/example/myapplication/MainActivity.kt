@@ -17,11 +17,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-        enableEdgeToEdge()
         setContentView(binding.root)
         initSubView()
         addClick()
+        addNavigation()
+
     }
+
+
+    private fun addNavigation () {
+        binding.bottomNavId.setOnItemSelectedListener { item ->
+         when(item.itemId){
+             R.id.first -> {
+                 replaceFragment(firstFragment)
+                 true
+             }
+
+             R.id.two -> {
+                 replaceFragment(secondFragment)
+                 true
+             }
+             else -> false
+
+         }
+        }
+    }
+
 
     private fun addClick() {
         binding.btn.setOnClickListener {
