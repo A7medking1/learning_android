@@ -1,26 +1,25 @@
 package com.example.myapplication
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
 import com.example.myapplication.MainActivity.Constants.EXTRA_NAME
-import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.databinding.ActivityHomeScreenBinding
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+class HomeScreen : AppCompatActivity() {
+    lateinit var binding: ActivityHomeScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d(LOG_TAG, "onCreate")
+        Log.d(MainActivity.Companion.LOG_TAG, "onCreate")
 
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-
+        binding = ActivityHomeScreenBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        val name = intent.getStringExtra(EXTRA_NAME)
+        binding.textView.text = "Welcome $name"
 
         addCallBack()
     }
@@ -56,28 +55,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val LOG_TAG = "FirstActivity"
+        const val LOG_TAG = "SecondActivity"
     }
 
 
     private fun addCallBack() {
-        binding.btnSubmit.setOnClickListener {
-            try {
-                val intent = Intent(Intent.ACTION_SEND)
-                intent.type = "text/plain"
-                intent.setPackage("com.whatsapp")
-                intent.putExtra(Intent.EXTRA_TEXT, "Hello")
-                startActivity(intent)
-            } catch (e: Exception) {
-                Toast.makeText(this, "WhatsApp not installed", Toast.LENGTH_SHORT).show()
-            }
+        binding.btnBack.setOnClickListener {
+            finish()
         }
 
     }
-
-    object Constants {
-        const val EXTRA_NAME = "extraName"
-    }
-
-
 }

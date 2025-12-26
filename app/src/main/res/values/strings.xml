@@ -4,4 +4,7 @@
     <string name="login">Login</string>
     <string name="enter_your_name">Enter Your Name</string>
     <string name="submit">Submit</string>
+    <string name="go_to_homescreen">go to HomeScreen</string>
+    <string name="welcome_to_home_screen">Welcome TO Home Screen</string>
+    <string name="back">Back</string>
 </resources>
