@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,18 +16,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         setContentView(binding.root)
 
-        loadImage()
+        onClick()
     }
 
-    private fun loadImage () {
-        val url = "https://tse2.mm.bing.net/th/id/OIP.0gYQF_95CNP0mil3zXeaBQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
-        Glide.with(this).load(url)
-            .placeholder(R.drawable.download)
-            .error(R.drawable.info)
-            .into(binding.imgView)
+    private fun onClick () {
+        binding.fab.setOnClickListener {
+            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show()
+        }
     }
 
 
