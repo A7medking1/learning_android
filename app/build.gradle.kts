@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation("io.reactivex.rxjava3:rxjava:3.1.12")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("com.airbnb.android:lottie:6.6.6")
     implementation("com.github.bumptech.glide:glide:5.0.5")

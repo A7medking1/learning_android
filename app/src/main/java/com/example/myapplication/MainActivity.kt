@@ -1,102 +1,63 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.os.StrictMode
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.HttpUrl
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import java.io.IOException
-import java.io.InputStreamReader
-import java.net.URL
+import io.reactivex.rxjava3.core.Observable
+import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
-    private lateinit var client: OkHttpClient  // Declare but don't initialize
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        client = OkHttpClient()
-
 
         setContentView(binding.root)
 
-        binding.btn.setOnClickListener {
-            makeRequestUsingOkHttpWithQueryParams(binding.name.text.toString())
-        }
-    }
-    private fun makeRequestUsingOkHttpWithQueryParams(name: String) {
-
-
-         var url = HttpUrl.Builder()
-            .scheme("https")
-            .host("api.nationalize.io")
-            .addQueryParameter("name",name)
-            .build()
-
-        val request = Request.Builder().url(url).build()
-
-        client.newCall(request).enqueue(
-            object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    Log.d(TAG, "onFailure : ${e.message}")
-                }
-                override fun onResponse(call: Call, response: Response) {
-                    runOnUiThread {
-                        binding.result.text = response.body?.string()
-                    }
-                }
-            },
-        )
+        foo()
     }
 
+    private fun foo() {
+//        val list = listOf<Int>(1,2,3,5,5,5,4,6,7,8,9,2,5,2)
+        val observable = Observable.interval(1, TimeUnit.SECONDS).map { it * 2 }
 
-    private fun makeRequestUsingOkHttp() {
-        val request = Request.Builder().url("https://v2.jokeapi.dev/joke/Any").build()
 
-        client.newCall(request).enqueue(
-            object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    Log.d(TAG, "onFailure : ${e.message}")
-                }
-                override fun onResponse(call: Call, response: Response) {
-                    runOnUiThread {
-                        binding.result.text = response.body?.string()
-                    }
-                }
-            },
-        )
+        observable.subscribe{ t ->
+                Log.d(TAG, "onNext: $t")
+            binding.result.text = t.toString()
+            }
+
+
+
+//        val observer = object : Observer<Int> {
+//            override fun onSubscribe(d: Disposable) {
+//                Log.d(TAG, "onSubscribe: ")
+//            }
+//
+//            override fun onNext(t: Int) {
+//                Log.d(TAG, "onNext: $t")
+//            }
+//
+//            override fun onError(e: Throwable) {
+//                Log.d(TAG, "onError: $e")
+//            }
+//
+//            override fun onComplete() {
+//                Log.d(TAG, "onComplete")
+//            }
+//
+//        }
+//
+//        happy.subscribe(observer)
+
     }
+
 
     companion object {
         private const val TAG = "MAKE_REQUEST_TAK"
-    }
-
-
-    private fun makeRequest() {
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-
-        StrictMode.setThreadPolicy(policy)
-
-
-        val uri = URL("https://v2.jokeapi.dev/joke/Any")
-
-        val connections = uri.openConnection()
-        val inputStream = connections.getInputStream()
-        val inputStreamReader = InputStreamReader(inputStream)
-
-        val result = inputStreamReader.readText()
-        binding.result.text = result
-
-
     }
 
 
