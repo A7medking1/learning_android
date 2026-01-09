@@ -42,6 +42,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("io.reactivex.rxjava3:rxjava:3.1.12")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("com.airbnb.android:lottie:6.6.6")
