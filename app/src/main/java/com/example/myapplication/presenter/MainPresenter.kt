@@ -1,21 +1,20 @@
 package com.example.myapplication.presenter
 
-import com.example.myapplication.FakeApiService
-import com.example.myapplication.FakeDataBase
+import com.example.myapplication.repository.MainRepository
 import com.example.myapplication.ui.IMainView
 
 class MainPresenter {
-    private val fakeApi = FakeApiService()
-    private val database = FakeDataBase()
     lateinit var view: IMainView
 
+    private val repository = MainRepository()
+
     fun fetchUserInfo() {
-        val user = database.getCurrentUser()
+        val user = repository.fetchUserInfo()
         view.onUserInfoSuccess(user)
     }
 
     fun fetchAWisdom() {
-        val result = fakeApi.getRandomWisdom()
+        val result = repository.fetchAWisdom()
         view.onWisdomSuccess(result)
     }
 
