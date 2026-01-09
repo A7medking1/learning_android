@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")  // ✅ مهم جداً للـ Data Binding!
+
 }
 
 android {
@@ -37,20 +39,12 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        dataBinding = true
     }
 }
 
 dependencies {
     val activityVersion = "1.12.2"
-
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.10.0")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-    implementation("io.reactivex.rxjava3:rxjava:3.1.12")
-    implementation("androidx.fragment:fragment-ktx:1.8.9")
-    implementation("com.airbnb.android:lottie:6.6.6")
-    implementation("com.github.bumptech.glide:glide:5.0.5")
-    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.2")
     implementation("androidx.activity:activity-ktx:${activityVersion}")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
