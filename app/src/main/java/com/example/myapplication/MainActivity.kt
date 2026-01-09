@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun fetchUserInfo() {
         val user = database.getCurrentUser()
+
         binding.userName.text = user.name
     }
 
