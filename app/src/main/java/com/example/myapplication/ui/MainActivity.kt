@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(), IMainView {
             textDate.text = wisdom.publishDate
             content.text = wisdom.content
         }
+
     }
 
 
