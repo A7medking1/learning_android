@@ -1,42 +1,40 @@
 package com.example.myapplication.ui
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.model.User
-import com.example.myapplication.model.Wisdom
-import com.example.myapplication.presenter.MainPresenter
+import com.example.myapplication.viewModel.MainViewModel
 
-class MainActivity : AppCompatActivity(), IMainView {
+class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private val presenter = MainPresenter()
 
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         setup()
     }
 
+
     private fun setup() {
-        presenter.view = this
-        presenter.fetchUserInfo()
+        viewModel.fetchUserInfo()
         binding.button.setOnClickListener {
-            presenter.fetchAWisdom()
+            viewModel.fetchAWisdom()
         }
-    }
 
-    override fun onUserInfoSuccess(user: User) {
-        binding.userName.text = user.name
-    }
+        viewModel.currentUser.observe(this) {
+            binding.userName.text = it.name
+        }
 
-    override fun onWisdomSuccess(wisdom: Wisdom) {
-        binding.apply {
-            textDate.text = wisdom.publishDate
-            content.text = wisdom.content
+        viewModel.currentWisdom.observe(this) {
+            binding.apply {
+                textDate.text = it.publishDate
+                content.text = it.content
+            }
         }
     }
 
