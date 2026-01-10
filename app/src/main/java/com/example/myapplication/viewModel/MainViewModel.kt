@@ -2,21 +2,14 @@ package com.example.myapplication.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.model.User
-import com.example.myapplication.model.Wisdom
-import com.example.myapplication.repository.MainRepository
+import com.example.myapplication.MyColors
 
 class MainViewModel : ViewModel() {
-    private val repository = MainRepository()
 
-    val currentUser = MutableLiveData<User>()
-    val currentWisdom = MutableLiveData<Wisdom>()
+    val color = MutableLiveData<MyColors>()
 
-    fun fetchUserInfo() {
-        currentUser.postValue(repository.fetchUserInfo())
+    fun changeData(){
+        color.postValue(MyColors.entries.toTypedArray().random())
     }
 
-    fun fetchAWisdom() {
-        currentWisdom.postValue(repository.fetchAWisdom())
-    }
 }

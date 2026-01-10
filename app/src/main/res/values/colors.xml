@@ -5,4 +5,7 @@
     <color name="btnBk">#C5CAE9</color>
     <color name="textColor">#0000CC</color>
     <color name="purple500">#9C27B0</color>
+    <color name="blue">#0042FF</color>
+    <color name="red">#FA0404</color>
+    <color name="yellow">#FFE918</color>
 </resources>
