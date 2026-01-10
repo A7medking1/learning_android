@@ -44,8 +44,10 @@ android {
 }
 
 dependencies {
-    val activityVersion = "1.12.2"
-    implementation("androidx.activity:activity-ktx:${activityVersion}")
+    implementation("androidx.fragment:fragment-ktx:1.8.9")
+    implementation("androidx.activity:activity-ktx:1.12.2")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
