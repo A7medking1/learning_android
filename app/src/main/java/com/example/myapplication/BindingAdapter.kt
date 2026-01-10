@@ -5,11 +5,26 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 
 @BindingAdapter(value = ["myColors"])
-fun setMyColors(view: View , myColor: MyColors?) {
-    when(myColor) {
-        MyColors.RED -> view.setBackgroundColor(ContextCompat.getColor(view.context,R.color.red))
-        MyColors.Yellow -> view.setBackgroundColor(ContextCompat.getColor(view.context,R.color.yellow))
-        MyColors.Blue ->  view.setBackgroundColor(ContextCompat.getColor(view.context,R.color.blue))
+fun setMyColors(view: View, myColor: MyColors?) {
+    when (myColor) {
+        MyColors.RED -> view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.red))
+        MyColors.Yellow -> view.setBackgroundColor(
+            ContextCompat.getColor(
+                view.context,
+                R.color.yellow
+            )
+        )
+
+        MyColors.Blue -> view.setBackgroundColor(ContextCompat.getColor(view.context, R.color.blue))
         else -> {}
+    }
+}
+
+@BindingAdapter(value = ["myVisibility"])
+fun setCustomVisibility(view: View, value: Boolean) {
+    if (value) {
+        view.visibility = View.VISIBLE
+    } else {
+        view.visibility = View.GONE
     }
 }

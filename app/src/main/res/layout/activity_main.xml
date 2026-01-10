@@ -4,6 +4,8 @@
 
     <data>
         <!-- You can add variables here for data binding -->
+        
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.example.myapplication.viewModel.MainViewModel" />
@@ -25,12 +27,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="16dp"
             android:textSize="22sp"
-            myColors="@{viewModel.color}"
-            android:onClick="@{() -> viewModel.changeData()}"
+            android:textColor="@color/white"
+            android:onClick="@{() -> viewModel.stopLoading()}"
             android:text="Click ME"
+            />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            myVisibility="@{viewModel.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
 

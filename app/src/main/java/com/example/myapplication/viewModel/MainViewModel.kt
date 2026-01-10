@@ -6,10 +6,15 @@ import com.example.myapplication.MyColors
 
 class MainViewModel : ViewModel() {
 
-    val color = MutableLiveData<MyColors>()
+    val loading = MutableLiveData<Boolean>(true)
 
-    fun changeData(){
-        color.postValue(MyColors.entries.toTypedArray().random())
+    fun stopLoading(){
+        if(loading.value == true){
+            loading.postValue(false)
+        }else {
+            loading.postValue(true)
+        }
+
     }
 
 }
