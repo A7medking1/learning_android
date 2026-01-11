@@ -44,6 +44,9 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.10.0")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("androidx.activity:activity-ktx:1.12.2")
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
