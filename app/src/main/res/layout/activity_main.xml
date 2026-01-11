@@ -3,84 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!-- You can add variables here for data binding -->
 
-        <import type="android.view.View" />
-
-        <variable
-            name="viewModel"
-            type="com.example.myapplication.viewModel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.joke.toData().setup}"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:showWhenSuccess="@{viewModel.joke}" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.joke.toData().delivery}"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text"
-            app:showWhenSuccess="@{viewModel.joke}" />
-
-        <Button
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentHost"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.getRandomJoke()}"
-            android:text="@string/get_another_joke"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/errorIcon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/info"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:showWhenError="@{viewModel.joke}" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.errorMessage}"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text"
-            app:showWhenError="@{viewModel.joke}" />
-
-
-        <ProgressBar
-            android:id="@+id/loadingIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:showWhenLoading="@{viewModel.joke}" />
+            android:layout_height="match_parent"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
