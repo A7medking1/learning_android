@@ -27,7 +27,8 @@ class AFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.GoTOB.setOnClickListener {
-            findNavController().navigate(R.id.action_AFragment_to_BFragment)
+            val action = AFragmentDirections.actionAFragmentToBFragment("ahmed nasr")
+            findNavController().navigate(action)
         }
 
         binding.GoTOC.setOnClickListener {

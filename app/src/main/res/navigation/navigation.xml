@@ -15,7 +15,11 @@
             app:destination="@id/BFragment" />
         <action
             android:id="@+id/action_AFragment_to_CFragment"
-            app:destination="@id/CFragment" />
+            app:destination="@id/CFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/CFragment"
@@ -24,7 +28,9 @@
         tools:layout="@layout/fragment_c" >
         <action
             android:id="@+id/action_CFragment_to_DFragment"
-            app:destination="@id/DFragment" />
+            app:destination="@id/DFragment"
+            app:popUpTo="@id/CFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/DFragment"
@@ -35,5 +41,9 @@
         android:id="@+id/BFragment"
         android:name="com.example.myapplication.BFragment"
         android:label="fragment_b"
-        tools:layout="@layout/fragment_b" />
+        tools:layout="@layout/fragment_b" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>
