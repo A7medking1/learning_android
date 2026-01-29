@@ -9,7 +9,7 @@ import com.example.myapplication.data.User
 import com.example.myapplication.databinding.RowBinding
 import com.example.myapplication.ui.ListFragmentDirections
 
-class MyAdapter :
+class MyAdapter(private val onDeleteClick: (User) -> Unit) :
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     private var users = emptyList<User>()
@@ -41,7 +41,10 @@ class MyAdapter :
             val action =
                 ListFragmentDirections.actionListFragment2ToAddFragment2(user)
             view.findNavController().navigate(action)
+        }
 
+        holder.binding.deleteIcon.setOnClickListener {
+            onDeleteClick(user)
         }
     }
 

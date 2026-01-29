@@ -11,8 +11,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adapters.MyAdapter
-import com.example.myapplication.viewModel.UserViewModel
+import com.example.myapplication.data.User
 import com.example.myapplication.databinding.FragmentListBinding
+import com.example.myapplication.viewModel.UserViewModel
 
 
 class ListFragment : Fragment() {
@@ -33,20 +34,27 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         onClickFab()
-        adapter = MyAdapter()
+        adapter = MyAdapter { user ->
+            onDeleteUser(user)
+        }
+
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        userViewModel.readAllData.observe(viewLifecycleOwner , Observer { user ->
+        userViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
             adapter.setData(user)
         })
+    }
+
+    private fun onDeleteUser(user: User) {
+        userViewModel.deleteUser(user)
     }
 
 
     private fun onClickFab() {
         binding.FABS.setOnClickListener {
-            findNavController().navigate(R.id.addFragment2,null)
+            findNavController().navigate(R.id.addFragment2, null)
         }
     }
 
