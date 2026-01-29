@@ -4,6 +4,7 @@
     <string name="login">Login</string>
     <string name="enter_your_name">Enter Your Name</string>
     <string name="submit">Submit</string>
+    <string name="update">update</string>
     <string name="go_to_homescreen">go to HomeScreen</string>
     <string name="welcome_to_home_screen">Welcome TO Home Screen</string>
     <string name="back">Back</string>
@@ -155,4 +156,6 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="enter_your_age">enter your age</string>
+    <string name="enter_your_second_name">enter your second name</string>
 </resources>

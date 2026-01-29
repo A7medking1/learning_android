@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adapters.MyAdapter
-import com.example.myapplication.data.UserViewModel
+import com.example.myapplication.viewModel.UserViewModel
 import com.example.myapplication.databinding.FragmentListBinding
 
 
@@ -46,8 +46,7 @@ class ListFragment : Fragment() {
 
     private fun onClickFab() {
         binding.FABS.setOnClickListener {
-            findNavController().navigate(R.id.addFragment2)
-
+            findNavController().navigate(R.id.addFragment2,null)
         }
     }
 

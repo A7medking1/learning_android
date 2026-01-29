@@ -1,15 +1,18 @@
-package com.example.myapplication.data
+package com.example.myapplication.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.data.User
+import com.example.myapplication.data.UserDatabase
+import com.example.myapplication.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
 
-     val readAllData: LiveData<List<User>>
+    val readAllData: LiveData<List<User>>
 
     private val repository: UserRepository
 
@@ -25,5 +28,9 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
+    fun updateUser(user: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateUser(user)
+        }
+    }
 }

@@ -3,9 +3,11 @@ package com.example.myapplication.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.data.User
 import com.example.myapplication.databinding.RowBinding
+import com.example.myapplication.ui.ListFragmentDirections
 
 class MyAdapter :
     RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
@@ -33,6 +35,14 @@ class MyAdapter :
         holder.firstName.text = user.firstName
         holder.secondName.text = user.lastName
         holder.age.text = "(${user.age})"
+
+
+        holder.binding.rowLayout.setOnClickListener { view ->
+            val action =
+                ListFragmentDirections.actionListFragment2ToAddFragment2(user)
+            view.findNavController().navigate(action)
+
+        }
     }
 
     override fun getItemCount(): Int {

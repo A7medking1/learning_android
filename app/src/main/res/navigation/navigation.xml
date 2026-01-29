@@ -11,6 +11,11 @@
         <action
             android:id="@+id/action_addFragment2_to_listFragment2"
             app:destination="@id/listFragment2" />
+        <argument
+            android:name="user"
+            app:argType="com.example.myapplication.data.User"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/listFragment2"
