@@ -26,6 +26,9 @@
         tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment2_to_addFragment2"
-            app:destination="@id/addFragment2" />
+            app:destination="@id/addFragment2"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/slide_in_left" />
     </fragment>
 </navigation>

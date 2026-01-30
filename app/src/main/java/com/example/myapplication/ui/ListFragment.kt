@@ -17,7 +17,6 @@ import com.example.myapplication.data.User
 import com.example.myapplication.databinding.FragmentListBinding
 import com.example.myapplication.viewModel.UserViewModel
 
-
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
 
@@ -67,7 +66,7 @@ class ListFragment : Fragment() {
 
     private fun onClickFab() {
         binding.FABS.setOnClickListener {
-            findNavController().navigate(R.id.addFragment2, null)
+            findNavController().navigate(R.id.action_listFragment2_to_addFragment2, null)
         }
     }
 
